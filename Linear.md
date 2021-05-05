@@ -16,12 +16,20 @@
 * 缺点：内存空间地址连续，增删时需要移动其他元素。
 * 优点：直接访问。  
 【C++：要注意vector 和 array的区别，vector的底层实现是array，严格来讲vector是容器，不是数组。】
-![image][1]  
+![数组][1]  
 
 **常用算法：**
 * **[二分查找](https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0704.二分查找.md)：有序数组中查找无重复元素**  
   暴力破解：O(n)  
-  二分查找：O(logn)
+  二分查找：O(logn)  
+  重点掌握两头闭合和左闭右开两种写法  
+  [**二分查找更多变种：**](https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/solution/yi-wen-dai-ni-gao-ding-er-fen-cha-zhao-j-ymwl/)
+![二分查找及其变种][5]
+注意点：  
+1. 不可写成:``mid = (left+right)/2``，这样可能会溢出，可写为：
+   ``mid = left +(right-left)/2``或`` left + ((right - left ) >> 1) ``  
+2. ``while(left <= right)``
+3. ``left = mid + 1``或``right = mid - 1``，避免死循环。  
 * **[移除元素](https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0027.移除元素.md)**   
   暴力破解(双循环法)：O(n^2)  
   双指针法(快慢指针法)：O(n)
@@ -32,7 +40,7 @@
 **常用算法：**  
 * **交换数值：**  
   1. 设置tmp变量。
-  2. 通过位运算：
+  2. 通过位运算(异或运算)：
 ```C++
 s[i] ^= s[j];
 s[j] ^= s[i];
@@ -58,7 +66,8 @@ Java：二维数组的每一行头结点的地址是没有规则的，不连续。其二维数组排列如下：
 
 #### 2.2 链表
 数据域+指针域，不连续存放  
-访问方式：根据指针对下一个数据进行访问。  
+访问方式：根据指针对下一个数据进行访问。
+![链表](./链表.png)  
 * 缺点：查找效率低（顺序查找），多余空间
 * 优点：自由度高，易增删。
 
@@ -70,7 +79,7 @@ C++:
 * 提供string类，提供size接口。
 * string很多字符串处理接口，如substr、split、重载了+。
 
-n#### 2.4 栈
+#### 2.4 栈
 线性表，后进先出  
 常用操作：push，pop  
 #### 2.5 队列
@@ -102,6 +111,7 @@ n#### 2.4 栈
 [2]:./数组和链表.png
 [3]:./链地址法.png
 [4]:./java二维数组.png
+[5]:./二分查找及其变种.jpg
 
 
 
