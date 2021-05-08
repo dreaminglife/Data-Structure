@@ -32,7 +32,24 @@
 3. ``left = mid + 1``或``right = mid - 1``，避免死循环。  
 * **[移除元素](https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0027.移除元素.md)**   
   暴力破解(双循环法)：O(n^2)  
-  双指针法(快慢指针法)：O(n)
+  双指针法(快慢指针法)：O(n)  
+  即一个快指针和一个慢指针在同一个循环内完成两个循环的工作，并不实际改变元素位置。
+  ```C++
+  // 时间复杂度：O(n)
+  // 空间复杂度：O(1)
+  class Solution {
+  public:
+      int removeElement(vector<int>& nums, int val) {
+          int slowIndex = 0;
+          for (int fastIndex = 0; fastIndex < nums.size(); fastIndex++) {
+              if (val != nums[fastIndex]) {
+                  nums[slowIndex++] = nums[fastIndex];
+              }
+          }
+          return slowIndex;
+      }
+  };
+  ```
 * **[滑动窗口](https://mp.weixin.qq.com/s/UrZynlqi4QpyLlLhBPglyg) (用于求数组的子序列)**
 * [模拟螺旋矩阵](https://mp.weixin.qq.com/s/KTPhaeqxbMK9CxHUUgFDmg)
 ******
